@@ -1,3 +1,4 @@
+// разве "once" - это некорректная запись?
 #pragma once
 
 #include <vector>

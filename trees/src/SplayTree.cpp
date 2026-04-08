@@ -1,5 +1,6 @@
 #include "SplayTree.hpp"
 
+// Совершаем левый поворот
 void SplayTree::rotateLeft(Node* x) const{
     if (x == nullptr || x->right == nullptr)
         return;
@@ -22,6 +23,7 @@ void SplayTree::rotateLeft(Node* x) const{
         tmp->parent = x;
 }
 
+// совершаем правый поворот
 void SplayTree::rotateRight(Node* x) const{
     if (x == nullptr || x->left == nullptr)
         return;
@@ -44,6 +46,7 @@ void SplayTree::rotateRight(Node* x) const{
         tmp->parent = x;
 }
 
+// комбинируем првый и левый повороты, чтобы делать zig, zig-zig и zig-zag
 void SplayTree::splay(Node* x) const{
     while (x->parent != nullptr){
         if (x == x->parent->left){
@@ -76,6 +79,7 @@ void SplayTree::splay(Node* x) const{
     root_ = x;
 }
 
+// ходим по всем вершинам, удаляем сначала листья
 void SplayTree::clear(Node* x){
     if (x != nullptr){
         clear(x->left);
@@ -83,11 +87,11 @@ void SplayTree::clear(Node* x){
         delete x;
     }
 }
-
+// вызываем clear
 SplayTree::~SplayTree(){
     clear(root_);
 }
-
+// Проходимся по вершинам, сначала меньшие потом большие
 void SplayTree::inorder(Node* node, std::vector<int>& out) const {
     if (node != nullptr){
         inorder(node->left, out);
@@ -103,13 +107,13 @@ std::size_t SplayTree::size() const{
 bool SplayTree::empty() const{
     return size_ == 0;
 }
-
+// проходимся по дереву и возвращаем отсортированные значения
 std::vector<int> SplayTree::values() const{
     std::vector<int> out;
     inorder(root_, out);
     return out;
 }
-
+// Используем преимущество взвешенного дерева и быстро находим или не находим искомое значение
 SplayTree::Node* SplayTree::findNode(int value) const{
     if (root_ == nullptr)
         return nullptr;
@@ -124,6 +128,7 @@ SplayTree::Node* SplayTree::findNode(int value) const{
     }
     return nullptr;
 }
+// Если не нашли значение возвращает последнее вхождение в вершину
 SplayTree::Node* SplayTree::findLast(int value) const{
     Node* current = root_;
     Node* last = nullptr;
@@ -134,7 +139,7 @@ SplayTree::Node* SplayTree::findLast(int value) const{
     }
     return last;
 }
-
+// находим самое максимальное значение в левом поддереве
 SplayTree::Node* SplayTree::subtreeMax(Node* node) const{
     if (node == nullptr)
         return nullptr;
@@ -143,7 +148,7 @@ SplayTree::Node* SplayTree::subtreeMax(Node* node) const{
         current = current->right;
     return current;
 }
-
+// Проверяем на вхождение и взвешиваем дерево
 bool SplayTree::contains(int value) const{
     Node* found = findNode(value);
     if (found != nullptr){
@@ -176,6 +181,7 @@ func insert(x : Node, z : Node):            // x — корень поддере
            x.left = z
            break
 */
+// Вставляем элемент
 bool SplayTree::insert(int value){
     if (root_ == nullptr){
         root_ = new Node{nullptr, nullptr, nullptr, value};
@@ -207,7 +213,7 @@ bool SplayTree::insert(int value){
     ++size_;
     return true;
 }
-
+// удаляем элемент
 bool SplayTree::remove(int value){
     if (root_ == nullptr)
         return false;
