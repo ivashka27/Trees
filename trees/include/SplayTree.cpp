@@ -67,7 +67,7 @@ private:
             Node* g = p->parent;
 
             if (!g) {
-                // Zig - один поворот
+                // Zig - Г®Г¤ГЁГ­ ГЇГ®ГўГ®Г°Г®ГІ
                 if (x == p->left) {
                     rotateRight(p);
                 }
@@ -76,22 +76,22 @@ private:
                 }
             }
             else if (x == p->left && p == g->left) {
-                // Zig-zig - два правых поворота
+                // Zig-zig - Г¤ГўГ  ГЇГ°Г ГўГ»Гµ ГЇГ®ГўГ®Г°Г®ГІГ 
                 rotateRight(g);
                 rotateRight(p);
             }
             else if (x == p->right && p == g->right) {
-                // Zig-zig - два левых поворота
+                // Zig-zig - Г¤ГўГ  Г«ГҐГўГ»Гµ ГЇГ®ГўГ®Г°Г®ГІГ 
                 rotateLeft(g);
                 rotateLeft(p);
             }
             else if (x == p->right && p == g->left) {
-                // Zig-zag - левый затем правый поворот
+                // Zig-zag - Г«ГҐГўГ»Г© Г§Г ГІГҐГ¬ ГЇГ°Г ГўГ»Г© ГЇГ®ГўГ®Г°Г®ГІ
                 rotateLeft(p);
                 rotateRight(g);
             }
             else {
-                // Zig-zag - правый затем левый поворот
+                // Zig-zag - ГЇГ°Г ГўГ»Г© Г§Г ГІГҐГ¬ Г«ГҐГўГ»Г© ГЇГ®ГўГ®Г°Г®ГІ
                 rotateRight(p);
                 rotateLeft(g);
             }
