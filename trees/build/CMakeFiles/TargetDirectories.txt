@@ -1,0 +1,4 @@
+/home/arslan/Trees/trees/build/CMakeFiles/splay.dir
+/home/arslan/Trees/trees/build/CMakeFiles/splay_test.dir
+/home/arslan/Trees/trees/build/CMakeFiles/edit_cache.dir
+/home/arslan/Trees/trees/build/CMakeFiles/rebuild_cache.dir
