@@ -91,13 +91,6 @@ AVLTree::Node * AVLTree::get_max(Node* node){
     return node;
 }
 
-// AVLTree::Node * AVLTree::get_min(Node * node){
-//     if (node == nullptr) {return nullptr;}
-//     if (node->left_ == nullptr) {return node;}
-//     return get_max(node->left_);
-// }
-
-
 AVLTree::Node * AVLTree::remove_node(Node * node, const int value, bool & removed) {
     if (node == nullptr) {return nullptr;}
     else if (value < node->value_) {node->left_ = remove_node(node->left_, value, removed);}
