@@ -1,0 +1,2 @@
+g++ main.cpp SplayTree.cpp -o splay
+.\splay.exe
