@@ -2,6 +2,8 @@
 
 #include <vector>
 
+struct Node;
+
 class Treap
 {
 public:
@@ -15,4 +17,8 @@ public:
     std::vector<int> values() const;
 
     ~Treap();
+
+private:
+    Node*       root_ = nullptr;
+    std::size_t sz_   = 0;
 };
