@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/arslan/Trees/trees/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

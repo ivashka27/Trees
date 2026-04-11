@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsplay.a CMakeFiles/splay.dir/src/SplayTree.cpp.o
+/usr/bin/ranlib libsplay.a
