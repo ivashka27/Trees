@@ -22,10 +22,10 @@ private:
     struct node
     {
         int key;
-        int height;
+        unsigned int height;
         node* left;
         node* right;
-        node(int k) : value(k), left(nullptr), right(nullptr), height(1) {}
+        node(int k) {key = k; left=right=0; height = 1;}
     };
     node* root = nullptr;
 
