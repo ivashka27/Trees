@@ -67,16 +67,16 @@ void AVLTree::update_h(node* node) {
 
 
 
-AVLTree::node* AVLTree::rotate_r(node* node){
-    node* node2 = node->left;
-    node->left = node2->right;
-    node2->right = node;
+AVLTree::node* AVLTree::rotate_r(AVLTree::node* node){
+    AVLTree::node* nenode = node->left;
+    node->left = nenode->right;
+    nenode->right = node;
     update_h(node);
-    update_h(node2);
-    return node2;
+    update_h(nenode);
+    return nenode;
 }
-AVLTree::node* AVLTree::rotate_l(node* node){
-    node* node2 = node->right;
+AVLTree::node* AVLTree::rotate_l(AVLTree::node* node){
+    AVLTree::node* node2 = node->right;
 	node->right = node2->left;
 	node2->left = node;
 	update_h(node);
@@ -90,7 +90,7 @@ AVLTree::node* AVLTree::rotate_l(node* node){
 AVLTree::node* AVLTree::balance(node* node){
     update_h(node);
     if(bfactor(node) == 2){
-        if(bfactor(node->right) < 0) p->right = rotate_r(node->right);
+        if(bfactor(node->right) < 0) node->right = rotate_r(node->right);
         return rotate_l(node);
     }
     if(bfactor(node) == -2){
@@ -100,7 +100,7 @@ AVLTree::node* AVLTree::balance(node* node){
     return node;
 }
 AVLTree::node* AVLTree::insert(node* node, int k){
-    if(!node) return new node(k);
+    if(!node) return new AVLTree::node(k);
 	if(k < node->key)
 		node->left = insert(node->left,k);
 	else
@@ -129,11 +129,11 @@ AVLTree::node* AVLTree::remove(node* node, int k){
 		node->right = remove(node->right,k);	
 	else
 	{
-		node* q = node->left;
-		node* r = node->right;
+		AVLTree::node* q = node->left;
+		AVLTree::node* r = node->right;
 		delete node;
 		if( !r ) return q;
-		node* min = findmin(r);
+		AVLTree::node* min = findmin(r);
 		min->right = removemin(r);
 		min->left = q;
 		return balance(min);
