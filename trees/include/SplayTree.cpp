@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 
+
 struct Node {
     int value;
     Node* left;
@@ -152,6 +153,7 @@ public:
         // у даляем сам узел
         delete node;
         sz--;
+        
         if (!L) {
             //     левое поддерево пусто – корнем становится правое
             root = R;
@@ -168,6 +170,7 @@ public:
         return true;
     }
 
+
     std::size_t size() const { return sz; }
     bool empty() const { return sz == 0; }
 
@@ -183,19 +186,26 @@ public:
     }
 };
 
+
 int main() {
     SplayTree tree;
+    
     tree.insert(10);
     tree.insert(5);
     tree.insert(15);
+    
     std::cout << tree.contains(10) << std::endl;
     std::cout << tree.contains(7) << std::endl;
+    
     auto vals = tree.values();
     for (int x : vals) std::cout << x << " ";
     std::cout << std::endl;
+    
     tree.remove(10);
+    
     vals = tree.values();
     for (int x : vals) std::cout << x << " ";
     std::cout << std::endl;
+    
     return 0;
 }
