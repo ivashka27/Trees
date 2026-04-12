@@ -1,0 +1,77 @@
+#include "AVLTree.hpp"
+
+bool AVLTree::contains(int value) const {
+    node* curr = root;
+    while(curr != 0){
+        if (value == curr->key) return true;
+        else if (value > curr->key) curr = curr->right;
+        else curr = curr->left;
+    }
+    return false;
+}
+
+bool AVLTree::insert(int value) {
+    if (contains(value)) return false;
+    root = insert(root, value);
+    tree_size++;
+    return true;
+}
+
+bool AVLTree::remove(int value){
+    if (!contains(value)) return false;
+    root = remove(root, value);
+    tree_size--;
+    return true;
+}
+
+std::size_t AVLTree::size() const{
+    return tree_size;
+}
+
+
+
+
+
+    
+    bool empty() const;
+
+    std::vector<int> values() const;
+
+    ~AVLTree();
+
+private:
+    std::size_t tree_size = 0;
+    
+    struct node
+    {
+        int key;
+        int height;
+        node* left;
+        node* right;
+        node(int k) : value(k), left(nullptr), right(nullptr), height(1) {}
+    };
+    node* root = nullptr;
+
+    unsigned int get_h(node* node) const;
+    int bfactor(node* node) const;
+    void update_h(node* node);
+
+    node* rotate_r(node* node);
+    node* rotate_l(node* node);
+
+    node* balance(node* node);
+    node* insert(node* node, int k);
+
+    node* findmin(node* node);
+    node* removemin(node* node);
+
+    node* remove(node* node, int k);
+    void clear(node* node);
+    
+    void in_order(node* node, std::vector<int>& values) const;
+};
+}
+    clear(root);
+    root = 0;
+    tree_size = 0;
+}
